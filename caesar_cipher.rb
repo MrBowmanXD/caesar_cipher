@@ -25,7 +25,7 @@ def caesar_cipher(string, integer)
 
       letter = ascii_code.to_i + integer
       if letter > 122
-      letter = (letter - 122) + 96
+        letter = (letter - 122) + 96
       end
       if letter > 90 && letter != ('a'...'z')
         letter = (letter - 90) + 64
