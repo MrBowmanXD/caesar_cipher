@@ -22,7 +22,15 @@ def caesar_cipher(string, integer)
 
   ascii.each do | ascii_code |
     if a_to_z.include?(ascii_code.chr)
+
       letter = ascii_code.to_i + integer
+      if letter > 122
+      letter = (letter - 122) + 96
+      end
+      if letter > 90 && letter != ('a'...'z')
+        letter = (letter - 90) + 64
+      end
+
       final_letters.push(letter.chr)
     else
       final_letters.push(ascii_code)
