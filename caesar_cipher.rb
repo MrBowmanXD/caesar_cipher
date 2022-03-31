@@ -3,9 +3,10 @@ def caesar_cipher(string, integer)
   phrase = []
   ascii = []
   final_letters = []
-  a_to_z = ("A"..."Z").to_a + ("a"..."z").to_a
+  a_to_z = ("a"..."z").to_a
+  a_to_z_upcase = ("A"..."Z").to_a
   a_to_z.push('z')
-  a_to_z.push('Z')
+  a_to_z_upcase.push('Z')
 
   string.each_char do | char |
     phrase.push(char)
@@ -21,13 +22,13 @@ def caesar_cipher(string, integer)
   end
 
   ascii.each do | ascii_code |
-    if a_to_z.include?(ascii_code.chr)
+    if a_to_z.include?(ascii_code.chr) || a_to_z_upcase.include?(ascii_code.chr)
 
       letter = ascii_code.to_i + integer
-      if letter > 122
+      if letter > 122 && a_to_z.include?(ascii_code.chr) 
         letter = (letter - 122) + 96
       end
-      if letter > 90 && letter != ('a'...'z')
+      if letter > 90 && a_to_z_upcase.include?(ascii_code.chr)
         letter = (letter - 90) + 64
       end
 
